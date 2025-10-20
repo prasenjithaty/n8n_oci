@@ -113,11 +113,6 @@ resource "oci_core_instance" "n8n_instance" {
   display_name        = "n8n-instance"
   shape               = "VM.Standard.E2.1.Micro"
 
-#  shape_config {
-#    memory_in_gbs = 4
-#    ocpus         = 1
-#  }
-
   source_details {
     source_type = "image"
     source_id   = data.oci_core_images.ubuntu.images[0].id
