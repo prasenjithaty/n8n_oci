@@ -16,7 +16,7 @@ data "oci_core_images" "ubuntu" {
   compartment_id           = local.compartment_ocid
   operating_system         = "Canonical Ubuntu"
   operating_system_version = "22.04"
-  shape                    = "VM.Standard.A1.Flex"
+  shape                    = "VM.Standard.E2.1.Micro"
 }
 
 resource "oci_core_virtual_network" "n8n_vcn" {
