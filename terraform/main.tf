@@ -16,7 +16,7 @@ data "oci_core_images" "ubuntu" {
   compartment_id           = local.compartment_ocid
   operating_system         = "Canonical Ubuntu"
   operating_system_version = "22.04"
-  shape                    = "VM.Standard.E2.1.Micro"
+  shape                    = "VM.Standard.A1.Flex"
 }
 
 resource "oci_core_virtual_network" "n8n_vcn" {
@@ -111,7 +111,12 @@ resource "oci_core_instance" "n8n_instance" {
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = local.compartment_ocid
   display_name        = "n8n-instance"
-  shape               = "VM.Standard.E2.1.Micro"
+  shape               = "VM.Standard.A1.Flex"
+
+  shape_config {
+    memory_in_gbs = 4
+    ocpus         = 1
+  }
 
   source_details {
     source_type = "image"
